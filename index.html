@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIVAH– Your Power Partner</title>
+
+<style>
+:root{
+  --primary:#2563eb;
+  --bg:#f4f7ff;
+  --card:#ffffff;
+  --text:#1f2937;
+  --muted:#6b7280;
+}
+
+.dark{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  transition:0.3s;
+}
+
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  background:var(--card);
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 8px 25px rgba(0,0,0,0.1);
+  z-index:100;
+}
+
+.logo{
+  font-size:26px;
+  font-weight:700;
+  color:var(--primary);
+}
+
+nav a{
+  margin-left:25px;
+  text-decoration:none;
+  color:var(--text);
+  font-weight:500;
+}
+
+.toggle{
+  margin-left:20px;
+  cursor:pointer;
+  font-size:20px;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  position:relative;
+  overflow:hidden;
+
+  background:linear-gradient(
+    -45deg,
+    #0b5ed7,
+    #2563eb,
+    #1e40af,
+    #0a2f8f
+  );
+  background-size:400% 400%;
+  animation:gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.hero h1{
+  font-size:52px;
+}
+
+.hero p{
+  margin-top:15px;
+  font-size:18px;
+  opacity:0.9;
+}
+
+/* PARTICLES */
+.particles{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+.particles span{
+  position:absolute;
+  width:8px;
+  height:8px;
+  background:rgba(255,255,255,0.6);
+  border-radius:50%;
+  animation:float linear infinite;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(110vh) scale(0.5);
+    opacity:0;
+  }
+  to{
+    transform:translateY(-10vh) scale(1);
+    opacity:1;
+  }
+}
+
+/* SECTIONS */
+section{
+  padding:80px 40px;
+}
+
+.title{
+  text-align:center;
+  font-size:34px;
+  margin-bottom:50px;
+  color:var(--primary);
+}
+
+/* REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.8s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* PRODUCTS */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:18px;
+  padding:25px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.12);
+  transition:0.4s;
+  cursor:pointer;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 30px rgba(37,99,235,0.35);
+}
+
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:contain;
+  background:#f1f5f9;
+  border-radius:12px;
+  margin-bottom:15px;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* ABOUT */
+.about{
+  max-width:850px;
+  margin:auto;
+  text-align:center;
+  line-height:1.8;
+  font-size:17px;
+}
+
+/* CONTACT */
+.contact{
+  max-width:600px;
+  margin:auto;
+}
+
+.contact input,
+.contact textarea{
+  width:100%;
+  padding:14px;
+  margin-bottom:15px;
+  border-radius:10px;
+  border:none;
+}
+
+.btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+  background:var(--primary);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+}
+
+.btn::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0.2);
+  opacity:0;
+  transition:0.3s;
+}
+
+.btn:hover::after{
+  opacity:1;
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-box{
+  background:var(--card);
+  border-radius:20px;
+  padding:30px;
+  width:90%;
+  max-width:420px;
+  animation:zoom 0.4s ease;
+}
+
+@keyframes zoom{
+  from{transform:scale(0.7);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.modal-box img{
+  width:100%;
+  height:200px;
+  object-fit:contain;
+  background:#f1f5f9;
+  border-radius:12px;
+}
+
+.close{
+  float:right;
+  cursor:pointer;
+  font-size:22px;
+}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#25D366;
+  color:white;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  text-decoration:none;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+footer{
+  background:var(--primary);
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .hero h1{font-size:36px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Viva</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <span class="toggle" onclick="toggleMode()">🌓</span>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="particles"></div>
+  <div>
+    <h1>VIVAH – Your Power Partner</h1>
+    <p>Smart voltage protection for every appliance</p>
+  </div>
+</section>
+
+<section id="products">
+  <h2 class="title reveal">Our Stabilizers</h2>
+  <div class="products">
+    <div class="card reveal" onclick="openModal('TV Stabilizer','Protects TVs from voltage fluctuation','₹1,800')">
+      <img src="images/tv.png">
+      <h3>TV Stabilizer</h3>
+      <p>For LED & Smart TVs</p>
+    </div>
+
+    <div class="card reveal" onclick="openModal('Refrigerator Stabilizer','Protects compressor','₹2,500')">
+      <img src="images/fridge.png">
+      <h3>Refrigerator Stabilizer</h3>
+      <p>Safe cooling</p>
+    </div>
+
+    <div class="card reveal" onclick="openModal('AC Stabilizer','Handles heavy load','₹2,500')">
+      <img src="images/ac.png">
+      <h3>AC Stabilizer</h3>
+      <p>High performance</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="title reveal">About Viva</h2>
+  <div class="about reveal">
+    Viva provides reliable electrical stabilizers designed for Indian power conditions.
+    We focus on safety, durability, and long-term appliance protection.
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="title reveal">Contact Us</h2>
+  <div class="contact reveal">
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <textarea rows="4" placeholder="Message"></textarea>
+    <button class="btn" onclick="alert('Message sent (demo)')">Send Message</button>
+  </div>
+</section>
+
+<footer>
+  © 2025 Viva Electricals
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <span class="close" onclick="closeModal()">×</span>
+    <h3 id="mTitle"></h3>
+    <p id="mDesc"></p>
+    <strong id="mPrice"></strong>
+    <button class="btn" onclick="alert('Added to cart (demo only)')">Add to Cart</button>
+  </div>
+</div>
+
+<!-- WHATSAPP -->
+<a  class="whatsapp"
+   href="https://wa.me/919420542839?text=Hello%20Viva%20Team,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20electrical%20stabilizers%20and%20pricing.%20Please%20guide%20me.%20Thank%20you."
+   target="_blank"
+   aria-label="Chat on WhatsApp">
+   🟢
+</a>
+
+
+<script>
+/* PARTICLES */
+const particleBox = document.querySelector('.particles');
+for(let i=0;i<45;i++){
+  const p = document.createElement('span');
+  p.style.left = Math.random()*100 + '%';
+  p.style.animationDuration = 15 + Math.random()*15 + 's';
+  p.style.animationDelay = Math.random()*10 + 's';
+  particleBox.appendChild(p);
+}
+
+/* MODAL */
+const modal = document.getElementById("modal");
+function openModal(t,d,p){
+  modal.style.display="flex";
+  mTitle.innerText=t;
+  mDesc.innerText=d;
+  mPrice.innerText=p;
+}
+function closeModal(){
+  modal.style.display="none";
+}
+
+/* DARK MODE */
+function toggleMode(){
+  document.body.classList.toggle("dark");
+}
+
+/* REVEAL */
+const reveals = document.querySelectorAll('.reveal');
+window.addEventListener('scroll',()=>{
+  reveals.forEach(r=>{
+    if(r.getBoundingClientRect().top < window.innerHeight - 100){
+      r.classList.add('active');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
