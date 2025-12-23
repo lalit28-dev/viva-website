@@ -674,41 +674,61 @@ window.addEventListener('scroll',()=>{
   });
 });
  
-let currentCategory = 'tv';
+<script>
+let activeCategory = 'tv';
 
-function showCategory(type){
-  currentCategory = type;
+function showCategory(category){
+  activeCategory = category;
+
+  // Hide all categories
   document.querySelectorAll('.product-set').forEach(set=>{
     set.classList.add('hidden');
   });
-  document.querySelector('.' + type).classList.remove('hidden');
 
-  filterByPrice(document.querySelector('.price-filter select').value);
-}
+  // Show selected category
+  const activeSet = document.querySelector('.product-set.' + category);
+  activeSet.classList.remove('hidden');
 
-function filterByPrice(range){
-  const products = document.querySelectorAll('.' + currentCategory + ' .prod-card');
+  // Reset price filter
+  document.getElementById('priceSelect').value = 'all';
 
-  products.forEach(card=>{
-    const price = parseInt(card.dataset.price);
-
-    if(range === 'all'){
-      card.style.display = 'block';
-    }
-    else if(range === '15000+'){
-      card.style.display = price >= 15000 ? 'block' : 'none';
-    }
-    else{
-      const [min,max] = range.split('-').map(Number);
-      card.style.display = (price >= min && price <= max) ? 'block' : 'none';
-    }
+  // Show all products in that category
+  activeSet.querySelectorAll('.prod-card').forEach(card=>{
+    card.style.display = 'block';
   });
 }
+
+function filterByPrice(value){
+  const activeSet = document.querySelector('.product-set.' + activeCategory);
+  const cards = activeSet.querySelectorAll('.prod-card');
+
+  cards.forEach(card=>{
+    const price = parseInt(card.dataset.price);
+    let show = false;
+
+    if(value === 'all'){
+      show = true;
+    }
+    else if(value === '15000+'){
+      show = price >= 15000;
+    }
+    else{
+      const [min,max] = value.split('-').map(Number);
+      show = price >= min && price <= max;
+    }
+
+    card.style.display = show ? 'block' : 'none';
+  });
+}
+
+// Load default category
+showCategory('tv');
 
 </script>
 
 </body>
 </html>
+
 
 
 
