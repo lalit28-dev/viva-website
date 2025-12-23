@@ -486,13 +486,13 @@ footer{
         <p class="price">₹1,800</p>
       </div>
 
-      <div class="prod-card" data-price="2,200">
+      <div class="prod-card" data-price="2200">
         <h3>Viva TV Guard 200</h3>
         <p>For Smart TVs up to 43"</p>
         <p class="price">₹2,200</p>
       </div>
 
-      <div class="prod-card" data-price="2,800">
+      <div class="prod-card" data-price="2800">
         <h3>Viva TV Guard Pro</h3>
         <p>For 4K TVs up to 55"</p>
         <p class="price">₹2,800</p>
@@ -501,19 +501,19 @@ footer{
 
     <!-- AC STABILIZERS -->
     <div class="product-set ac hidden">
-      <div class="prod-card" data-price="3,800">
+      <div class="prod-card" data-price="3800">
         <h3>Viva AC Shield 4KVA</h3>
         <p>For 1 Ton AC</p>
         <p class="price">₹3,800</p>
       </div>
 
-      <div class="prod-card" data-price="4,600">
+      <div class="prod-card" data-price="4600">
         <h3>Viva AC Shield 5KVA</h3>
         <p>For 1.5 Ton AC</p>
         <p class="price">₹4,600</p>
       </div>
 
-      <div class="prod-card"data-price="5,400">
+      <div class="prod-card"data-price="5400">
         <h3>Viva AC Shield Max</h3>
         <p>For 2 Ton AC</p>
         <p class="price">₹5,400</p>
@@ -522,41 +522,39 @@ footer{
 
     <!-- FRIDGE STABILIZERS -->
     <div class="product-set fridge hidden">
-      <div class="prod-card" data-price="2,000">
+      <div class="prod-card" data-price="2000">
         <h3>Viva Cool Safe 100</h3>
         <p>Single Door Refrigerator</p>
         <p class="price">₹2,000</p>
       </div>
 
-      <div class="prod-card" data-price="2,500">
+      <div class="prod-card" data-price="2500">
         <h3>Viva Cool Safe 200</h3>
         <p>Double Door Refrigerator</p>
         <p class="price">₹2,500</p>
       </div>
 
-      <div class="prod-card" data-price="3,100">
+      <div class="prod-card" data-price="3100">
         <h3>Viva Cool Safe Pro</h3>
         <p>Large & Inverter Fridge</p>
         <p class="price">₹3,100</p>
       </div>
     </div>
-
-  </div>
- <!-- MAINLINE STABILIZERS -->
+    <!-- MAINLINE STABILIZERS -->
 <div class="product-set mainline hidden">
-  <div class="prod-card"data-price="9,500">
+  <div class="prod-card"data-price="9500">
     <h3>Viva Mainline Safe 5kVA</h3>
     <p>For Small Homes</p>
     <p class="price">₹9,500</p>
   </div>
 
-  <div class="prod-card" data-price="12,800">
+  <div class="prod-card" data-price="12800">
     <h3>Viva Mainline Safe 7.5kVA</h3>
     <p>For Medium Homes</p>
     <p class="price">₹12,800</p>
   </div>
 
-  <div class="prod-card"data-price="16,500">
+  <div class="prod-card"data-price="16500">
     <h3>Viva Mainline Safe 10kVA</h3>
     <p>For Large Homes</p>
     <p class="price">₹16,500</p>
@@ -565,24 +563,27 @@ footer{
 
 <!-- SERVO CONTROL STABILIZERS -->
 <div class="product-set servo hidden">
-  <div class="prod-card"data-price="22,000">
+  <div class="prod-card"data-price="22000">
     <h3>Viva Servo Pro 5kVA</h3>
     <p>For Offices & Equipment</p>
     <p class="price">₹22,000</p>
   </div>
 
-  <div class="prod-card"data-price="35,000">
+  <div class="prod-card"data-price="35000">
     <h3>Viva Servo Pro 10kVA</h3>
     <p>Industrial Use</p>
     <p class="price">₹35,000</p>
   </div>
 
-  <div class="prod-card"data-price="48,000">
+  <div class="prod-card"data-price="48000">
     <h3>Viva Servo Pro 15kVA</h3>
     <p>Heavy Machinery</p>
     <p class="price">₹48,000</p>
   </div>
 </div>
+
+  </div>
+
 
 </section>
 
@@ -672,13 +673,7 @@ window.addEventListener('scroll',()=>{
     }
   });
 });
- function showCategory(type){
-  document.querySelectorAll('.product-set').forEach(set=>{
-    set.classList.add('hidden');
-  });
-
-  document.querySelector('.' + type).classList.remove('hidden');
-}
+ 
 let currentCategory = 'tv';
 
 function showCategory(type){
@@ -714,6 +709,7 @@ function filterByPrice(range){
 
 </body>
 </html>
+
 
 
 
