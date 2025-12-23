@@ -340,23 +340,39 @@ footer{
 
 <section id="products">
   <h2 class="title reveal">Our Stabilizers</h2>
-  <div class="products">
-    <div class="card reveal" onclick="openModal('TV Stabilizer','Protects TVs from voltage fluctuation','₹1,800')">
-      <img src="images/tv.png">
+
+  <div class="products-grid">
+    <div class="prod-card reveal">
+      <div class="prod-img">
+        <img src="images/tv.png" alt="TV Stabilizer">
+      </div>
       <h3>TV Stabilizer</h3>
-      <p>For LED & Smart TVs</p>
+      <p class="price">₹1,800</p>
+      <button class="btn" onclick="openModal('TV Stabilizer','Protects TVs from voltage fluctuation','₹1,800')">
+        More Info
+      </button>
     </div>
 
-    <div class="card reveal" onclick="openModal('Refrigerator Stabilizer','Protects compressor','₹2,500')">
-      <img src="images/fridge.png">
+    <div class="prod-card reveal">
+      <div class="prod-img">
+        <img src="images/fridge.png" alt="Refrigerator Stabilizer">
+      </div>
       <h3>Refrigerator Stabilizer</h3>
-      <p>Safe cooling</p>
+      <p class="price">₹2,500</p>
+      <button class="btn" onclick="openModal('Refrigerator Stabilizer','Protects compressor','₹2,500')">
+        More Info
+      </button>
     </div>
 
-    <div class="card reveal" onclick="openModal('AC Stabilizer','Handles heavy load','₹2,500')">
-      <img src="images/ac.png">
+    <div class="prod-card reveal">
+      <div class="prod-img">
+        <img src="images/ac.png" alt="AC Stabilizer">
+      </div>
       <h3>AC Stabilizer</h3>
-      <p>High performance</p>
+      <p class="price">₹3,800</p>
+      <button class="btn" onclick="openModal('AC Stabilizer','Handles heavy load','₹3,800')">
+        More Info
+      </button>
     </div>
   </div>
 </section>
@@ -451,6 +467,7 @@ window.addEventListener('scroll',()=>{
 
 </body>
 </html>
+
 
 
 
