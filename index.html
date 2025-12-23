@@ -352,6 +352,60 @@ footer{
 @media(max-width:600px){
   .hero h1{font-size:36px;}
 }
+ /* CATEGORY BUTTONS */
+.category-buttons{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-bottom:40px;
+}
+
+.category-buttons button{
+  padding:12px 20px;
+  border:none;
+  border-radius:8px;
+  background:var(--primary);
+  color:white;
+  cursor:pointer;
+  font-size:15px;
+}
+
+/* PRODUCT GRID */
+.products-grid{
+  max-width:1100px;
+  margin:auto;
+}
+
+.product-set{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+
+.prod-card{
+  background:var(--card);
+  padding:20px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 8px 22px rgba(0,0,0,0.12);
+  transition:0.3s;
+}
+
+.prod-card:hover{
+  transform:translateY(-6px);
+}
+
+.price{
+  font-weight:bold;
+  color:var(--primary);
+  margin-top:10px;
+}
+
+/* HIDE */
+.hidden{
+  display:none;
+}
+
 </style>
 </head>
 
@@ -381,39 +435,79 @@ footer{
 <section id="products">
   <h2 class="title reveal">Our Stabilizers</h2>
 
+  <!-- CATEGORY BUTTONS -->
+  <div class="category-buttons reveal">
+    <button onclick="showCategory('tv')">TV Stabilizers</button>
+    <button onclick="showCategory('ac')">AC Stabilizers</button>
+    <button onclick="showCategory('fridge')">Refrigerator Stabilizers</button>
+  </div>
+
+  <!-- PRODUCTS GRID -->
   <div class="products-grid">
-    <div class="prod-card reveal">
-      <div class="prod-img">
-        <img src="images/tv.png" alt="TV Stabilizer">
+
+    <!-- TV STABILIZERS -->
+    <div class="product-set tv">
+      <div class="prod-card">
+        <h3>Viva TV Guard 100</h3>
+        <p>For LED TVs up to 32"</p>
+        <p class="price">₹1,800</p>
       </div>
-      <h3>TV Stabilizer</h3>
-      <p class="price">₹1,800</p>
-      <button class="btn" onclick="openModal('TV Stabilizer','Protects TVs from voltage fluctuation','₹1,800')">
-        More Info
-      </button>
+
+      <div class="prod-card">
+        <h3>Viva TV Guard 200</h3>
+        <p>For Smart TVs up to 43"</p>
+        <p class="price">₹2,200</p>
+      </div>
+
+      <div class="prod-card">
+        <h3>Viva TV Guard Pro</h3>
+        <p>For 4K TVs up to 55"</p>
+        <p class="price">₹2,800</p>
+      </div>
     </div>
 
-    <div class="prod-card reveal">
-      <div class="prod-img">
-        <img src="images/fridge.png" alt="Refrigerator Stabilizer">
+    <!-- AC STABILIZERS -->
+    <div class="product-set ac hidden">
+      <div class="prod-card">
+        <h3>Viva AC Shield 4KVA</h3>
+        <p>For 1 Ton AC</p>
+        <p class="price">₹3,800</p>
       </div>
-      <h3>Refrigerator Stabilizer</h3>
-      <p class="price">₹2,500</p>
-      <button class="btn" onclick="openModal('Refrigerator Stabilizer','Protects compressor','₹2,500')">
-        More Info
-      </button>
+
+      <div class="prod-card">
+        <h3>Viva AC Shield 5KVA</h3>
+        <p>For 1.5 Ton AC</p>
+        <p class="price">₹4,600</p>
+      </div>
+
+      <div class="prod-card">
+        <h3>Viva AC Shield Max</h3>
+        <p>For 2 Ton AC</p>
+        <p class="price">₹5,400</p>
+      </div>
     </div>
 
-    <div class="prod-card reveal">
-      <div class="prod-img">
-        <img src="images/ac.png" alt="AC Stabilizer">
+    <!-- FRIDGE STABILIZERS -->
+    <div class="product-set fridge hidden">
+      <div class="prod-card">
+        <h3>Viva Cool Safe 100</h3>
+        <p>Single Door Refrigerator</p>
+        <p class="price">₹2,000</p>
       </div>
-      <h3>AC Stabilizer</h3>
-      <p class="price">₹3,800</p>
-      <button class="btn" onclick="openModal('AC Stabilizer','Handles heavy load','₹3,800')">
-        More Info
-      </button>
+
+      <div class="prod-card">
+        <h3>Viva Cool Safe 200</h3>
+        <p>Double Door Refrigerator</p>
+        <p class="price">₹2,500</p>
+      </div>
+
+      <div class="prod-card">
+        <h3>Viva Cool Safe Pro</h3>
+        <p>Large & Inverter Fridge</p>
+        <p class="price">₹3,100</p>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -503,6 +597,14 @@ window.addEventListener('scroll',()=>{
     }
   });
 });
+ function showCategory(type){
+  document.querySelectorAll('.product-set').forEach(set=>{
+    set.classList.add('hidden');
+  });
+
+  document.querySelector('.' + type).classList.remove('hidden');
+}
+
 </script>
 
 </body>
