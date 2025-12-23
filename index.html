@@ -3,79 +3,371 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Viva Electricals – Stabilizers</title>
+<title>VIVA– Your Power Partner</title>
 
 <style>
+ .logo-img{
+  height:70px;          /* Bigger logo */
+  width:auto;
+  display:block;
+  max-width:100%;
+}
+
 :root{
   --primary:#2563eb;
   --bg:#f4f7ff;
   --card:#ffffff;
   --text:#1f2937;
+  --muted:#6b7280;
+}
+
+.dark{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui,sans-serif;
 }
 
 body{
-  margin:0;
-  font-family:system-ui,sans-serif;
   background:var(--bg);
   color:var(--text);
+  transition:0.3s;
 }
 
 /* HEADER */
 header{
-  background:white;
-  padding:15px 30px;
-  box-shadow:0 4px 15px rgba(0,0,0,0.1);
   position:sticky;
   top:0;
+  background:var(--card);
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 8px 25px rgba(0,0,0,0.1);
+  z-index:100;
 }
 
-header h1{
-  margin:0;
+.logo{
+  font-size:26px;
+  font-weight:700;
   color:var(--primary);
 }
 
-/* SECTION */
+nav a{
+  margin-left:25px;
+  text-decoration:none;
+  color:var(--text);
+  font-weight:500;
+}
+
+.toggle{
+  margin-left:20px;
+  cursor:pointer;
+  font-size:20px;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  position:relative;
+  overflow:hidden;
+
+  background:linear-gradient(
+    -45deg,
+    #0b5ed7,
+    #2563eb,
+    #1e40af,
+    #0a2f8f
+  );
+  background-size:400% 400%;
+  animation:gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.hero h1{
+  font-size:52px;
+}
+
+.hero p{
+  margin-top:15px;
+  font-size:18px;
+  opacity:0.9;
+}
+
+/* PARTICLES */
+.particles{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+.particles span{
+  position:absolute;
+  width:8px;
+  height:8px;
+  background:rgba(255,255,255,0.6);
+  border-radius:50%;
+  animation:float linear infinite;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(110vh) scale(0.5);
+    opacity:0;
+  }
+  to{
+    transform:translateY(-10vh) scale(1);
+    opacity:1;
+  }
+}
+
+/* SECTIONS */
 section{
-  padding:60px 20px;
+  padding:80px 40px;
 }
 
 .title{
   text-align:center;
-  font-size:32px;
-  margin-bottom:25px;
+  font-size:34px;
+  margin-bottom:50px;
   color:var(--primary);
 }
 
-/* CATEGORY BUTTONS */
+/* REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.8s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* PRODUCTS */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+ /* V-GUARD STYLE PRODUCT GRID */
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+
+.prod-card{
+  background:var(--card);
+  border-radius:16px;
+  padding:20px;
+  text-align:center;
+  box-shadow:0 8px 22px rgba(0,0,0,0.12);
+  transition:0.3s;
+}
+
+.prod-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 30px rgba(0,0,0,0.18);
+}
+
+.prod-img img{
+  width:100%;
+  height:160px;
+  object-fit:contain;
+  margin-bottom:12px;
+}
+
+.prod-card h3{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.prod-card .price{
+  font-size:17px;
+  font-weight:bold;
+  color:var(--primary);
+  margin-bottom:12px;
+}
+
+
+.card{
+  background:var(--card);
+  border-radius:18px;
+  padding:25px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.12);
+  transition:0.4s;
+  cursor:pointer;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 30px rgba(37,99,235,0.35);
+}
+
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:contain;
+  background:#f1f5f9;
+  border-radius:12px;
+  margin-bottom:15px;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* ABOUT */
+.about{
+  max-width:850px;
+  margin:auto;
+  text-align:center;
+  line-height:1.8;
+  font-size:17px;
+}
+
+/* CONTACT */
+.contact{
+  max-width:600px;
+  margin:auto;
+}
+
+.contact input,
+.contact textarea{
+  width:100%;
+  padding:14px;
+  margin-bottom:15px;
+  border-radius:10px;
+  border:none;
+}
+
+.btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+  background:var(--primary);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+}
+
+.btn::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0.2);
+  opacity:0;
+  transition:0.3s;
+}
+
+.btn:hover::after{
+  opacity:1;
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-box{
+  background:var(--card);
+  border-radius:20px;
+  padding:30px;
+  width:90%;
+  max-width:420px;
+  animation:zoom 0.4s ease;
+}
+
+@keyframes zoom{
+  from{transform:scale(0.7);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.modal-box img{
+  width:100%;
+  height:200px;
+  object-fit:contain;
+  background:#f1f5f9;
+  border-radius:12px;
+}
+
+.close{
+  float:right;
+  cursor:pointer;
+  font-size:22px;
+}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#25D366;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+
+footer{
+  background:var(--primary);
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .hero h1{font-size:36px;}
+}
+ /* CATEGORY BUTTONS */
 .category-buttons{
   display:flex;
-  flex-wrap:wrap;
   justify-content:center;
-  gap:12px;
-  margin-bottom:20px;
+  gap:15px;
+  margin-bottom:40px;
 }
 
 .category-buttons button{
-  padding:10px 16px;
+  padding:12px 20px;
   border:none;
-  border-radius:6px;
+  border-radius:8px;
   background:var(--primary);
   color:white;
   cursor:pointer;
-  font-size:14px;
-}
-
-/* PRICE FILTER */
-.price-filter{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-bottom:35px;
-}
-
-.price-filter select{
-  padding:8px 12px;
-  font-size:14px;
+  font-size:15px;
 }
 
 /* PRODUCT GRID */
@@ -93,13 +385,14 @@ section{
 .prod-card{
   background:var(--card);
   padding:20px;
-  border-radius:14px;
+  border-radius:16px;
   text-align:center;
-  box-shadow:0 6px 20px rgba(0,0,0,0.12);
+  box-shadow:0 8px 22px rgba(0,0,0,0.12);
+  transition:0.3s;
 }
 
-.prod-card h3{
-  margin-bottom:8px;
+.prod-card:hover{
+  transform:translateY(-6px);
 }
 
 .price{
@@ -112,154 +405,301 @@ section{
 .hidden{
   display:none;
 }
+.price-filter{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin-bottom:35px;
+}
+
+.price-filter label{
+  font-weight:600;
+}
+
+.price-filter select{
+  padding:10px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>Viva Electricals</h1>
+  <div class="logo">
+  <img src="logo/logo.png" alt="Viva Electricals" class="logo-img">
+</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <span class="toggle" onclick="toggleMode()">🌓</span>
+  </nav>
 </header>
 
+<section class="hero" id="home">
+  <div class="particles"></div>
+  <div>
+    <h1>VIVA – Your Power Partner</h1>
+    <p>Smart voltage protection for every appliance</p>
+  </div>
+</section>
+
 <section id="products">
-  <h2 class="title">Our Stabilizers</h2>
+  <h2 class="title reveal">Our Stabilizers</h2>
 
-  <div class="category-buttons">
-    <button onclick="showCategory('tv')">TV</button>
-    <button onclick="showCategory('ac')">AC</button>
-    <button onclick="showCategory('fridge')">Refrigerator</button>
-    <button onclick="showCategory('mainline')">Mainline</button>
-    <button onclick="showCategory('servo')">Servo</button>
-  </div>
+  <!-- CATEGORY BUTTONS -->
+ <div class="category-buttons reveal">
+  <button onclick="showCategory('tv')">TV Stabilizers</button>
+  <button onclick="showCategory('ac')">AC Stabilizers</button>
+  <button onclick="showCategory('fridge')">Refrigerator Stabilizers</button>
+  <button onclick="showCategory('mainline')">Mainline Stabilizers</button>
+  <button onclick="showCategory('servo')">Servo Stabilizers</button>
+</div>
 
-  <div class="price-filter">
-    <select id="priceSelect" onchange="filterByPrice(this.value)">
-      <option value="all">All Prices</option>
-      <option value="0-3000">Below ₹3,000</option>
-      <option value="3000-7000">₹3,000 – ₹7,000</option>
-      <option value="7000-15000">₹7,000 – ₹15,000</option>
-      <option value="15000+">Above ₹15,000</option>
-    </select>
-  </div>
+ <div class="price-filter reveal">
+  <label>Filter by Price:</label>
+ <select id="priceSelect" onchange="filterByPrice(this.value)">
+    <option value="all">All</option>
+    <option value="0-3000">Below ₹3,000</option>
+    <option value="3000-7000">₹3,000 – ₹7,000</option>
+    <option value="7000-15000">₹7,000 – ₹15,000</option>
+    <option value="15000+">Above ₹15,000</option>
+  </select>
+</div>
 
+
+
+  <!-- PRODUCTS GRID -->
   <div class="products-grid">
 
-    <!-- TV -->
+    <!-- TV STABILIZERS -->
     <div class="product-set tv">
-      <div class="prod-card" data-price="1800">
+     <div class="prod-card" data-price="1800">
+
         <h3>Viva TV Guard 100</h3>
-        <p>Up to 32" TV</p>
+        <p>For LED TVs up to 32"</p>
         <p class="price">₹1,800</p>
       </div>
+
       <div class="prod-card" data-price="2200">
         <h3>Viva TV Guard 200</h3>
-        <p>Up to 43" TV</p>
+        <p>For Smart TVs up to 43"</p>
         <p class="price">₹2,200</p>
       </div>
+
       <div class="prod-card" data-price="2800">
         <h3>Viva TV Guard Pro</h3>
-        <p>Up to 55" TV</p>
+        <p>For 4K TVs up to 55"</p>
         <p class="price">₹2,800</p>
       </div>
     </div>
 
-    <!-- AC -->
+    <!-- AC STABILIZERS -->
     <div class="product-set ac hidden">
       <div class="prod-card" data-price="3800">
-        <h3>Viva AC Shield 4kVA</h3>
-        <p>1 Ton AC</p>
+        <h3>Viva AC Shield 4KVA</h3>
+        <p>For 1 Ton AC</p>
         <p class="price">₹3,800</p>
       </div>
+
       <div class="prod-card" data-price="4600">
-        <h3>Viva AC Shield 5kVA</h3>
-        <p>1.5 Ton AC</p>
+        <h3>Viva AC Shield 5KVA</h3>
+        <p>For 1.5 Ton AC</p>
         <p class="price">₹4,600</p>
       </div>
+
       <div class="prod-card" data-price="5400">
         <h3>Viva AC Shield Max</h3>
-        <p>2 Ton AC</p>
+        <p>For 2 Ton AC</p>
         <p class="price">₹5,400</p>
       </div>
     </div>
 
-    <!-- FRIDGE -->
+    <!-- FRIDGE STABILIZERS -->
     <div class="product-set fridge hidden">
       <div class="prod-card" data-price="2000">
         <h3>Viva Cool Safe 100</h3>
-        <p>Single Door</p>
+        <p>Single Door Refrigerator</p>
         <p class="price">₹2,000</p>
       </div>
+
       <div class="prod-card" data-price="2500">
         <h3>Viva Cool Safe 200</h3>
-        <p>Double Door</p>
+        <p>Double Door Refrigerator</p>
         <p class="price">₹2,500</p>
       </div>
+
       <div class="prod-card" data-price="3100">
         <h3>Viva Cool Safe Pro</h3>
-        <p>Inverter Fridge</p>
+        <p>Large & Inverter Fridge</p>
         <p class="price">₹3,100</p>
       </div>
     </div>
+    <!-- MAINLINE STABILIZERS -->
+<div class="product-set mainline hidden">
+  <div class="prod-card" data-price="9500">
+    <h3>Viva Mainline Safe 5kVA</h3>
+    <p>For Small Homes</p>
+    <p class="price">₹9,500</p>
+  </div>
 
-    <!-- MAINLINE -->
-    <div class="product-set mainline hidden">
-      <div class="prod-card" data-price="9500">
-        <h3>Mainline 5kVA</h3>
-        <p>Small Homes</p>
-        <p class="price">₹9,500</p>
-      </div>
-      <div class="prod-card" data-price="12800">
-        <h3>Mainline 7.5kVA</h3>
-        <p>Medium Homes</p>
-        <p class="price">₹12,800</p>
-      </div>
-      <div class="prod-card" data-price="16500">
-        <h3>Mainline 10kVA</h3>
-        <p>Large Homes</p>
-        <p class="price">₹16,500</p>
-      </div>
-    </div>
+  <div class="prod-card" data-price="12800">
+    <h3>Viva Mainline Safe 7.5kVA</h3>
+    <p>For Medium Homes</p>
+    <p class="price">₹12,800</p>
+  </div>
 
-    <!-- SERVO -->
-    <div class="product-set servo hidden">
-      <div class="prod-card" data-price="22000">
-        <h3>Servo 5kVA</h3>
-        <p>Office Use</p>
-        <p class="price">₹22,000</p>
-      </div>
-      <div class="prod-card" data-price="35000">
-        <h3>Servo 10kVA</h3>
-        <p>Industrial</p>
-        <p class="price">₹35,000</p>
-      </div>
-      <div class="prod-card" data-price="48000">
-        <h3>Servo 15kVA</h3>
-        <p>Heavy Machinery</p>
-        <p class="price">₹48,000</p>
-      </div>
-    </div>
+  <div class="prod-card" data-price="16500">
+    <h3>Viva Mainline Safe 10kVA</h3>
+    <p>For Large Homes</p>
+    <p class="price">₹16,500</p>
+  </div>
+</div>
 
+<!-- SERVO CONTROL STABILIZERS -->
+<div class="product-set servo hidden">
+  <div class="prod-card" data-price="22000">
+    <h3>Viva Servo Pro 5kVA</h3>
+    <p>For Offices & Equipment</p>
+    <p class="price">₹22,000</p>
+  </div>
+
+  <div class="prod-card" data-price="35000">
+    <h3>Viva Servo Pro 10kVA</h3>
+    <p>Industrial Use</p>
+    <p class="price">₹35,000</p>
+  </div>
+
+  <div class="prod-card" data-price="48000">
+    <h3>Viva Servo Pro 15kVA</h3>
+    <p>Heavy Machinery</p>
+    <p class="price">₹48,000</p>
+  </div>
+</div>
+
+  </div>
+
+
+</section>
+
+<section id="about">
+  <h2 class="title reveal">About Viva</h2>
+  <div class="about reveal">
+    Viva provides reliable electrical stabilizers designed for Indian power conditions.
+    We focus on safety, durability, and long-term appliance protection.
   </div>
 </section>
 
+<section id="contact">
+  <h2 class="title reveal">Contact Us</h2>
+  <div class="contact reveal">
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <textarea rows="4" placeholder="Message"></textarea>
+    <button class="btn" onclick="alert('Message sent (demo)')">Send Message</button>
+  </div>
+</section>
+
+<footer>
+  <img src="logo/logo.png" alt="Viva Electricals" style="height:35px;"><br><br>
+  © 2025 Viva Electricals
+</footer>
+
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <span class="close" onclick="closeModal()">×</span>
+    <h3 id="mTitle"></h3>
+    <p id="mDesc"></p>
+    <strong id="mPrice"></strong>
+    <button class="btn" onclick="alert('Added to cart (demo only)')">Add to Cart</button>
+  </div>
+</div>
+
+<!-- WHATSAPP -->
+<a class="whatsapp"
+   href="https://wa.me/919420542839?text=Hello%20Viva%20Electricals,%20I%20want%20more%20details%20about%20your%20products."
+   target="_blank"
+   aria-label="Chat on WhatsApp">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="30" height="30" fill="white">
+  <path d="M16 2C8.3 2 2 8.1 2 15.6c0 2.8.8 5.4 2.3 7.6L2 30l7-2.2c2.1 1.2 4.5 1.9 7 1.9 7.7 0 14-6.1 14-13.6S23.7 2 16 2z"/>
+</svg>
+
+</a>
+
+
+
 <script>
+/* PARTICLES */
+const particleBox = document.querySelector('.particles');
+for(let i=0;i<45;i++){
+  const p = document.createElement('span');
+  p.style.left = Math.random()*100 + '%';
+  p.style.animationDuration = 15 + Math.random()*15 + 's';
+  p.style.animationDelay = Math.random()*10 + 's';
+  particleBox.appendChild(p);
+}
+
+/* MODAL */
+const modal = document.getElementById("modal");
+function openModal(t,d,p){
+  modal.style.display="flex";
+  mTitle.innerText=t;
+  mDesc.innerText=d;
+  mPrice.innerText=p;
+}
+function closeModal(){
+  modal.style.display="none";
+}
+
+/* DARK MODE */
+function toggleMode(){
+  document.body.classList.toggle("dark");
+}
+
+/* REVEAL */
+const reveals = document.querySelectorAll('.reveal');
+window.addEventListener('scroll',()=>{
+  reveals.forEach(r=>{
+    if(r.getBoundingClientRect().top < window.innerHeight - 100){
+      r.classList.add('active');
+    }
+  });
+});
+ 
 let activeCategory = 'tv';
 
 function showCategory(category){
   activeCategory = category;
 
+  // Hide all categories
   document.querySelectorAll('.product-set').forEach(set=>{
     set.classList.add('hidden');
   });
 
-  document.querySelector('.product-set.' + category).classList.remove('hidden');
+  // Show selected category
+  const activeSet = document.querySelector('.product-set.' + category);
+  activeSet.classList.remove('hidden');
 
+  // Reset price filter
   document.getElementById('priceSelect').value = 'all';
-  filterByPrice('all');
+
+  // Show all products in that category
+  activeSet.querySelectorAll('.prod-card').forEach(card=>{
+    card.style.display = 'block';
+  });
 }
 
 function filterByPrice(value){
-  const cards = document.querySelectorAll('.product-set.' + activeCategory + ' .prod-card');
+  const activeSet = document.querySelector('.product-set.' + activeCategory);
+  const cards = activeSet.querySelectorAll('.prod-card');
 
   cards.forEach(card=>{
     const price = parseInt(card.dataset.price);
@@ -267,9 +707,11 @@ function filterByPrice(value){
 
     if(value === 'all'){
       show = true;
-    }else if(value === '15000+'){
+    }
+    else if(value === '15000+'){
       show = price >= 15000;
-    }else{
+    }
+    else{
       const [min,max] = value.split('-').map(Number);
       show = price >= min && price <= max;
     }
@@ -278,11 +720,14 @@ function filterByPrice(value){
   });
 }
 
+// Load default category
 showCategory('tv');
+
 </script>
 
 </body>
 </html>
+
 
 
 
